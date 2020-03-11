@@ -6,7 +6,6 @@ const _ =require('lodash');
 const MonkeyLearn = require('monkeylearn')
 const ml = new MonkeyLearn('74792b69aa6f8594a31fb07a2b3eaa7998802f7f')
 
-
 module.exports.register = (req,res,next)=> {
     console.log('Inside user Register Function');
     var user =new User();
@@ -57,23 +56,7 @@ module.exports.userProfile = (req,res,next)=>{
     )
 }
 
-// module.exports.extract = (req,res,next) => {
-//     Console.log('Inside Extraction Function');
-//     let model_id = 'ex_YCya9nrn'
-//     let data= [''];
-//     data.append(req.body.data);
-//     ml.extractors.extract(model_id, data).then(res => {
-//         console.log(res.body)
-//     })
-//     return next(res.body);
-// }
-
 module.exports.extract = () => {
     Console.log('Inside Extracction Function');
     //res.status(200).json({"Code":"Fuckoff"});
 }
-
-
-
-
-
