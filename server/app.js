@@ -20,6 +20,10 @@ app.post('/extract',function(req,response){
     console.log('Inside Extract function');
     var query = req.body.data;
     console.log(req.body.data);
+    // if(query==null || string(query) == null){
+    //     console.log('hi');
+    //    return response.status(404).json({"message":"Case Facts cannot be empty"});
+    // }
     const MonkeyLearn=require('monkeylearn');
     var data=[]
     data.push(query);

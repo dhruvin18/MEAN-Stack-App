@@ -29,15 +29,21 @@
 
     <div class="container" style="margin-top: 2rem">
         <div align="center">
-          <form #QueryForm="ngForm" (ngSubmit)="onSubmit(QueryForm)">
+          <form #QueryForm="ngForm" (ngSubmit)="QueryForm.valid && onSubmit(QueryForm)">
               <!-- <input type="text"> -->
               <!-- <textarea placeholder="Enter the Case Facts Here" #data="ngModel" [(ngModel)]="model.data" id="casefacts" required></textarea> -->
               <!-- <button type="button" class="btn btn-danger btn-block" id="submitbutton">Submit Query</button> -->
-              <input type="text" name="data" #data="ngModel" [(ngModel)]="model.data" placeholder="Case Facts" required>
+              <input type="text" name="data" #data="ngModel" [(ngModel)]="model.data" placeholder="Case Facts" required minlength="50">
               <input type="submit" value="Submit Query" id="submitbutton" class="btn btn-block">
+              <div *ngIf="QueryForm.submitted && !data.valid">
+                <label *ngIf="data.errors.required" class="validation-message"><h3><b>CASE FACTS CANNOT BE EMPTY</b></h3></label>
+                <label *ngIf="data.errors.minlength" class="validation-message"><h3>The case facts must be more detailed</h3></label>
+              </div>
           </form>
         </div>
     </div>
+
+    <h2 *ngIf="functionDebug1">{{functionDebug1}}</h2>
 
     <div class="container" *ngIf="keywords">
         <!-- <div *ngFor="let keyword of keywords">
