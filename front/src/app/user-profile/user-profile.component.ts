@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { formatDate } from '../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -36,7 +37,7 @@ export class UserProfileComponent implements OnInit {
 
 
   onSubmit(form: NgForm) {
-
+    const formdata = form.value;
     this.userService.extractKeywords(form.value).subscribe(
       res => {
         // this.functionDebug = JSON.stringify(res[0]);
@@ -44,7 +45,17 @@ export class UserProfileComponent implements OnInit {
         const temp = 'extractions';
         const temp1 = 'parsed_value';
         this.keywords = res[0][temp];
-        this.case = res[0][text];
+        // this.case = res[0][text];
+      },
+      err => {
+        this.functionDebug = err.errors;
+      }
+    );
+    this.userService.preProcess(form.value).subscribe(
+      res => {
+        const data = 'data';
+        this.case = res[data];
+        console.log(res[data]);
       },
       err => {
         this.functionDebug = err.errors;

@@ -19,7 +19,7 @@ app.use(passport.initialize());
 app.post('/extract',function(req,response){
     console.log('Inside Extract function');
     var query = req.body.data;
-    console.log(req.body.data);
+    // console.log(req.body.data);
     if(query.toString() == null || query.toString() == ''){
         console.log("empty string");
         return response.status(404).json({"message": "Cannot process empty requests", "error": true});

@@ -1,10 +1,11 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask_cors import CORS
 from preprocess import preProcess
 
 app=Flask(__name__)
-
+CORS(app)
 # data=open('../Dataset/dataset_bombay/AakifAteequeNachanVTheStateOfMaharashtra.txt', 'r', encoding="utf8", errors="ignore")
 
 @app.route('/data', methods=['GET'])

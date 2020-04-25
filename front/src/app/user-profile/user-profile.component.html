@@ -50,7 +50,7 @@
             <button type="button" class="btn btn-dark">{{keyword.parsed_value}}</button>
             <p>{{keyword.relevance}}</p>
         </div> -->
-        <textarea id="casefacts">{{case}}</textarea>
+        <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
         <table class="table">
           <thead>
             <tr>
@@ -63,7 +63,6 @@
               <td>{{keyword.parsed_value}}</td>
               <td>{{keyword.relevance}}</td>
             </tr>
-
           </tbody>
         </table>
     </div>
