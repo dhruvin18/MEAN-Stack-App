@@ -5,7 +5,7 @@ from preprocess import preProcess
 
 app=Flask(__name__)
 
-data='Dhruvin is tring flask'
+# data=open('../Dataset/dataset_bombay/AakifAteequeNachanVTheStateOfMaharashtra.txt', 'r', encoding="utf8", errors="ignore")
 
 @app.route('/data', methods=['GET'])
 def get_tasks():
@@ -14,7 +14,6 @@ def get_tasks():
 @app.route('/pre_process',methods=['POST'])
 def get_data():
     data=request.get_json()
-    print(data['data'])
     final=preProcess(data['data'])
     return jsonify({'data':final})
  

@@ -15,7 +15,8 @@ var userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: 'Password can\'t be empty',
-        minlength: [8,'Password must be atleast 8 characters']
+        minlength: [8,'Password must be atleast 8 characters'],
+        maxlength: [16,'password must have 8-16 characters']
     },
     saltSecret: String
 });

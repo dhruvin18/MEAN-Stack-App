@@ -1,6 +1,40 @@
+import lexnlp.nlp.en.tokens
+import lexnlp.nlp.en.transforms.tokens
+import glob
+import nltk
+from nltk.tokenize import RegexpTokenizer
+from spacy.lang.en import English
+from spacy import displacy
+import en_core_web_sm
+from sklearn.feature_extraction.text import TfidfVectorizer
+import pandas as pd
+import string
+
+label_phrases = ['the Revision Applications are dismissed','appeal fails and stands dismissed','Application, therefore, is hereby dismissed','cannot be a ground to entertain subsequent application for grant of anticipatory bail','see no reason to entertain this second application for anticipatory bail','application is concerned, it stands dismissed','petitioner shall continue to be on bail unless the said bail is cancelled','the application is hereby dismissed','The application is, therefore, rejected','The petition, therfore, fails','This application is devoid of material particulars, and, therefore, not maintainable','we have taken the petitions will have to be dismissed and are dismissed','Accordingly, this Application stands rejected','these applications cannot be granted','I do not think that it would be proper to reduce the bail amount','WE, therefore, dispose of this petition','order disposes of the two applications for cancellation of bail','I find no merit in this petition','their remand is valid and legal, and, therefore the applicants are not entitled to bail','this is not a case where the petitioner should be readmitted to bail','this repeated bail application stands dismissed','applicant stands rejected','the bail application made by the accused/petitioner has to be rejected and is accordingly rejected','the objections raised to the detention order are not convincing','Writ Petition, being devoid of substance, stands dismissed','I reject all the above applications','I find there is no merit in this application and consequently the same is hereby dismissed','no case is made out by the petitioner for quashing and setting aside the order of detention','application is required to be and accordingly rejected','the applicant cannot be admitted to bail','applications are, therefore, rejected','directed not to release the convicted accused on bail','application fails and dismissed accordingly','prayer for suspending the operation of this order is rejected','Petition is devoid of merits, hence rule stands discharged','order putting the petitioner in police custody is hereby quashed','Interim relief stands vacated','the appeal is rejected','no case made out for interference in the impugned order of detention of the detenu','petition fails and is hereby dismissed','application for anticipatory bail/ pre-arrest bail order stands rejected','application deserves to be rejected and accordingly same is rejected','application, therefore, stands rejected','present application therefore deserves to be rejected and is hereby rejected','reject this application for anticipatory bail','applicant-accused for bail stands dismissed','application for cancellation of bail is rejected','application is not maintainable and consequently the same is rejected','application is dismissed','Application is dismissed','application is rejected','Application is rejected','application is disposed of accordingly','Application for bail is rejected','application for bail is rejected','Writ Petition is disposed off','applications stand dismissed','bail application is accordingly rejected','Application is accordingly rejected','application is hence rejected','Application rejected','application fails and it is dismissed','petition will stand rejected','appeals are dismissed','applications are hereby dismissed as not maintainable','applications stand rejected','application stands rejected','petition is dismissed','Petition is dismissed','Application is accordingly disposed of','Application dismissed','applications stand adjourned','criminal applications is accordingly rejected','application for anticipatory bail is rejected','In the event of the arrest of the applicants in the territory of this state each of the applicants be released on bail','applicant-accused be released on bail','Accused be released on bail','present appellants be released on bail in the event of their arrest','Criminal Appeal stands allowed','bail is quashed and set aside','The petition is accordingly allowed','satisfied that the accused-applicant deserves granting of bail','Trial Court should lay off the hands from taking any action against these applicants for arresting them','The appeal is allowed','must be quashed and set aside','THE Revision is partly allowed','applications under consideration deserves to succeed','applicant shall be released forthwith on the same bail','Petitions allowed','PRAYER for cancellation of bail made by the prosecution against all other respondents is hereby allowed','we allow this petition','we allow this petition; quash and set aside the impugned detention order','Application for anticipatory bail is allowed','The petitioners be released on bail','Applicant\'s interim bail granted','find the impugned order of detention unsustainable','I find this to be a fit case in which the petitioner deserves to be grant anticipatory bail','APPLICATION allowed','at the commencement of this order that I have granted bail','In the event of the arrest of the Applicants, the Applicants shall be released on bail','petition is hereby allowed','it is a case to protect the applicants/accused by granting pre-arrest bail','this is a fit case for grant of bail to applicant-petitioner','In the event of the arrest of the Applicant, the Applicant shall be released on bail','Applicant shall be released on bail','All these three petitions are allowed','application succeeds','It is directed that the Applicant be released on bail','Applicant be released on bail','Criminal Application for cancellation of bail is allowed','I direct that the applicant be enlarged on bail','applicant/accused shall be released on bail','application is partly allowed','appellant will be relcased on bail','petitioner is directed to be released on bail','Application succeed','petitioner is ordered to be released on bail','bail granted by the Magistrate is also hereby set aside','anticipatory bail granted to the respondents is cancelled','Applicant shall be enlarged on bail','detenus are directed to be released forthwith','Petition is allowed','Prayer for cancellation of bail made by the prosecution against all other respondents is hereby allowed','allow the above application','allow both these applications','detenu shall be set at liberty','accused be enlarged on bail','Petition allowed','petition is allowed','petition partly succeeds','Application allowed','detenu is directed to be released forthwith','detenu be released forthwith','appellants be ordered to be enlarged on bail','application is allowed','detenu be released','Application is allowed','Applications are allowed','application for cancellation of bail is allowed','For the aforesaid reasons, accused be released','Applicants in both the applications shall be released on bail','applications are allowed','applicant is granted bail','Applications filed by the Customs Department/State are accordingly allowed','detention order is unsustainable and the petition succeeds','Applicant is ordered to be released on bail','applicant is ordered to be released on bail','applicant shall be enlarged on bail','bail is granted subject to condition','against the petitioner is quashed and set aside','the applicants are granted bail']
+label_phrases = list(map(lambda x:x.lower(), label_phrases))
+label_phrases = list(set(label_phrases))
+
+
 def preProcess(data):
-    if 'is' in data:
-        data='Dhruvin trying flask'
-    else:
-        data='Dhruvin'
-    return data
+    text1=data
+    textlength=text1.split(' ')
+    print(len(textlength))
+    text1=text1.translate(str.maketrans('','', string.punctuation))
+    for phrase in label_phrases:
+        if phrase in text1.lower():
+            print(phrase)
+            text1=text1.replace(phrase,'')
+    nlp = en_core_web_sm.load()
+    text2= nlp(text1)
+    entities=[(i, i.label_, i.label) for i in text2.ents]
+    for x,y,z in entities:
+        if y=='DATE' or y=='PERSON' or y=='GPE' or y=='ORG':
+            text1=text1.replace(str(x),'')
+    token1 = list(lexnlp.nlp.en.tokens.get_lemma_list(text1,stopword=True,lowercase=True))
+    tokenstr1=""
+    print(len(token1))
+    print(entities)
+    for t in token1:
+        tokenstr1+=t+" "
+    print(tokenstr1)
+    return tokenstr1

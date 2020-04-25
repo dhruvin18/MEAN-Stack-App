@@ -2,9 +2,6 @@ const mongoose=require('mongoose');
 const User=mongoose.model('User');  
 const passport=require('passport');
 const _ =require('lodash');
-// for keyword extraction Module and API KEY 
-const MonkeyLearn = require('monkeylearn')
-const ml = new MonkeyLearn('74792b69aa6f8594a31fb07a2b3eaa7998802f7f')
 
 module.exports.register = (req,res,next)=> {
     console.log('Inside user Register Function');
@@ -54,9 +51,4 @@ module.exports.userProfile = (req,res,next)=>{
             }
         }    
     )
-}
-
-module.exports.extract = () => {
-    Console.log('Inside Extracction Function');
-    //res.status(200).json({"Code":"Fuckoff"});
 }
