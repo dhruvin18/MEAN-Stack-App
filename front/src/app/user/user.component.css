@@ -1,0 +1,291 @@
+  /* You can add global styles to this file, and also import other style files */
+  @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+  /* BASIC */
+
+  html {
+    /* background-color: #56baed; */
+    background-color: black ;
+  }
+
+  body {
+    font-family: "Poppins", sans-serif !important;
+    height: 100vh !important;
+  }
+
+  a {
+    color: #92badd ;
+    display:inline-block ;
+    text-decoration: none ;
+    font-weight: 400 ;
+  }
+
+  h2 {
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    display:inline-block !important;
+    margin: 40px 8px 10px 8px !important;
+    color: #cccccc !important;
+  }
+
+  /* STRUCTURE */
+
+  .wrapper {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    padding: 20px !important;
+  }
+
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px !important;
+    border-radius: 10px 10px 10px 10px !important;
+    background: #fff !important;
+    padding: 30px !important;
+    width: 90% !important;
+    max-width: 450px !important;
+    position: relative !important;
+    padding: 0px !important;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3) !important;
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3) !important;
+    text-align: center !important;
+  }
+
+  #formFooter {
+    background-color: #f6f6f6 !important;
+    border-top: 1px solid #dce8f1 !important;
+    padding: 25px !important;
+    text-align: center !important;
+    -webkit-border-radius: 0 0 10px 10px !important;
+    border-radius: 0 0 10px 10px !important;
+  }
+
+  /* TABS */
+
+  h2.inactive {
+    color: #cccccc !important;
+  }
+
+  h2.active {
+    color: #0d0d0d !important;
+    border-bottom: 2px solid firebrick !important;
+  }
+
+  /* FORM TYPOGRAPHY*/
+
+  input[type=button], input[type=submit], input[type=reset]  {
+    cursor: pointer !important;
+    /* background-color: #56baed; */
+    background-color: black !important;
+    border: none !important;
+    color: white !important;
+    padding: 15px 80px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4) !important;
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4) !important;
+    -webkit-border-radius: 5px 5px 5px 5px !important;
+    border-radius: 5px 5px 5px 5px !important;
+    margin: 5px 20px 40px 20px !important;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    -moz-transition: all 0.3s ease-in-out !important;
+    -ms-transition: all 0.3s ease-in-out !important;
+    -o-transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color: firebrick !important;
+  }
+
+  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95) !important;
+    -webkit-transform: scale(0.95) !important;
+    -o-transform: scale(0.95) !important;
+    -ms-transform: scale(0.95) !important;
+    transform: scale(0.95) !important;
+  }
+
+  input[type=submit]:disabled{
+    background-color: #f5f6f6 !important;
+    color: #7d7d7d !important;
+  }
+
+  input[type=text],input[type=password] {
+    background-color: #f6f6f6 !important ;
+    border: none !important;
+    color: #0d0d0d !important;
+    padding: 15px 32px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    font-size: 16px !important;
+    margin: 5px !important;
+    width: 85% !important;
+    border: 2px solid #f6f6f6 !important;
+    -webkit-transition: all 0.5s ease-in-out !important;
+    -moz-transition: all 0.5s ease-in-out !important;
+    -ms-transition: all 0.5s ease-in-out !important;
+    -o-transition: all 0.5s ease-in-out !important;
+    transition: all 0.5s ease-in-out !important;
+    -webkit-border-radius: 5px 5px 5px 5px !important;
+    border-radius: 5px 5px 5px 5px !important;
+  }
+
+  input[type=text]:focus,input[type=password]:focus {
+    background-color: #fff !important;
+    border-bottom: 2px solid black !important;
+  }
+
+  input[type=text]:placeholder {
+    color: #cccccc !important;
+  }
+
+  input[type=text].invalid-textbox,input[type=password].invalid-textbox{
+  border-bottom: 2px solid #ed5558 !important;
+  }
+
+  label.validation-message{
+    color:#ed5558 !important;
+  }
+
+  /* ANIMATIONS */
+
+  /* Simple CSS3 Fade-in-down Animation */
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown !important;
+    animation-name: fadeInDown !important;
+    -webkit-animation-duration: 1s !important;
+    animation-duration: 1s !important;
+    -webkit-animation-fill-mode: both !important;
+    animation-fill-mode: both !important;
+  }
+
+  @-webkit-keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+    }
+  }
+
+  /* Simple CSS3 Fade-in Animation */
+  @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+  @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+  .fadeIn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+  }
+
+  .fadeIn.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+  }
+
+  .fadeIn.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+  }
+
+  .fadeIn.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+  }
+
+  .fadeIn.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+  }
+
+  /* Simple CSS3 Fade-in Animation */
+  .underlineHover:after {
+    display: block !important;
+    left: 0 !important;
+    bottom: -10px !important;
+    width: 0 !important;
+    height: 2px !important;
+    background-color: rgb(92, 11, 11) !important;
+    content: "" !important;
+    transition: width 0.2s !important;
+  }
+
+  .underlineHover:hover {
+    color: #0d0d0d !important;
+  }
+
+  .underlineHover:hover:after{
+    width: 100% !important;
+  }
+
+
+
+  /* OTHERS */
+
+  *:focus {
+      outline: none !important;
+  }
+
+  #icon {
+    width:60% !important;
+  }
+
+  * {
+    box-sizing: border-box !important;
+  }
+
+
+  .alert {
+    padding: 20px !important;
+    background-color: #f44336 !important;  /* Red */
+    color: white !important;
+    margin-bottom: 15px !important;
+  }
+
+  .success{
+    padding: 20px  !important;
+    background-color:#249424 !important;  /* Green */
+    color: white !important;
+    margin-bottom: 15px !important;
+  }
