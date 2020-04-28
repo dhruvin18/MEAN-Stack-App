@@ -32,4 +32,4 @@ def predict_label(data):
     lr_predict_label = loaded_model.predict(vectorcase)
     loaded_model = pickle.load(open(rffilename, 'rb'))
     rf_predict_label = loaded_model.predict(vectorcase)
-    return jsonify({"SVM": svm_predict_label.item(0) , "Naive Bayes": nb_predict_label.item(0), "k Nearest Neighbour": knn_predict_label.item(0), "Logistic Regression": lr_predict_label.item(0), "Random Forest": rf_predict_label.item(0)})
+    return jsonify({"case": data,"SVM": svm_predict_label.item(0) , "Naive Bayes": nb_predict_label.item(0), "k Nearest Neighbour": knn_predict_label.item(0), "Logistic Regression": lr_predict_label.item(0), "Random Forest": rf_predict_label.item(0)})

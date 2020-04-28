@@ -22,9 +22,10 @@ def get_cleanede_data():
 @app.route('/predict_class', methods=['POST'])
 def get_class():
     data=request.get_json()
-    final=predict_label(data['data'])
+    data=preProcess(data['data'])
+    final=predict_label(data)
+    print(final)
     return final
-
 
 if __name__== '__main__':
     app.run(debug=True)

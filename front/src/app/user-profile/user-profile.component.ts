@@ -20,6 +20,7 @@ export class UserProfileComponent implements OnInit {
   rfclass;
   lrclass;
   knnclass;
+  classerror;
   lr = 'Logistic Regression';
   nb = 'Naive Bayes';
   rf = 'Random Forest';
@@ -61,23 +62,18 @@ export class UserProfileComponent implements OnInit {
         this.functionDebug = err.errors;
       }
     );
-    this.userService.preProcess(form.value).subscribe(
-      res => {
-        const data = 'data';
-        this.case = res[data];
-        console.log(res[data]);
-      },
-      err => {
-        this.functionDebug = err.errors;
-      }
-    );
     this.userService.predict_label(form.value).subscribe(
       res => {
+        const data = 'case';
+        this.case = res[data];
         this.lrclass = res[this.lr];
         this.nbclass = res[this.nb];
         this.rfclass = res[this.rf];
         this.knnclass = res[this.knn];
         this.svmclass = res[this.svm];
+      },
+      err => {
+        this.classerror = err.errors;
       }
     );
   }
