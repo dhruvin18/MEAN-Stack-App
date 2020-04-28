@@ -39,6 +39,10 @@ export class UserService {
     return this.http.post('http://localhost:5000/pre_process', data);
   }
 
+  predict_label(data) {
+    return this.http.post('http://localhost:5000/predict_class', data);
+  }
+
   // helper methods
   setToken(token: string) {
     localStorage.setItem('token', token);

@@ -45,6 +45,26 @@
 
     <h2 *ngIf="functionDebug1">{{functionDebug1}}</h2>
 
+    <div class="container" *ngIf="case">
+      <table class="table">
+        <tr>
+          <th>Algorithm</th>
+          <th>{{svm}}</th>
+          <th>{{rf}}</th>
+          <th>{{knn}}</th>
+          <th>{{lr}}</th>
+          <th>{{nb}}</th>
+        </tr>
+        <tr>
+          <th>Predicted Class</th>
+          <td>{{svmclass}}</td>
+          <td>{{rfclass}}</td>
+          <td>{{knnclass}}</td>
+          <td>{{lrclass}}</td>
+          <td>{{nbclass}}</td>
+        </tr>
+      </table>
+    </div>
     <div class="container" *ngIf="keywords">
         <!-- <div *ngFor="let keyword of keywords">
             <button type="button" class="btn btn-dark">{{keyword.parsed_value}}</button>

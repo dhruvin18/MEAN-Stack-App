@@ -15,6 +15,16 @@ export class UserProfileComponent implements OnInit {
   functionDebug: string;
   functionDebug1: string;
   case;
+  svmclass;
+  nbclass;
+  rfclass;
+  lrclass;
+  knnclass;
+  lr = 'Logistic Regression';
+  nb = 'Naive Bayes';
+  rf = 'Random Forest';
+  svm = 'SVM';
+  knn = 'k Nearest Neighbour';
   // keywords: string[];
   keywords;
   confidence: number[];
@@ -59,6 +69,15 @@ export class UserProfileComponent implements OnInit {
       },
       err => {
         this.functionDebug = err.errors;
+      }
+    );
+    this.userService.predict_label(form.value).subscribe(
+      res => {
+        this.lrclass = res[this.lr];
+        this.nbclass = res[this.nb];
+        this.rfclass = res[this.rf];
+        this.knnclass = res[this.knn];
+        this.svmclass = res[this.svm];
       }
     );
   }
