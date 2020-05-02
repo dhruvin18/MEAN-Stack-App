@@ -21,11 +21,14 @@ export class UserProfileComponent implements OnInit {
   lrclass;
   knnclass;
   classerror;
+  files;
   lr = 'Logistic Regression';
   nb = 'Naive Bayes';
   rf = 'Random Forest';
   svm = 'SVM';
   knn = 'k Nearest Neighbour';
+  name = 'http://localhost:5000/download';
+  filename = 'AmrishTrivediAliasNikkiVStateOfUP.txt';
   // keywords: string[];
   keywords;
   confidence: number[];
@@ -49,17 +52,23 @@ export class UserProfileComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     const formdata = form.value;
-    this.userService.extractKeywords(form.value).subscribe(
+    // this.userService.extractKeywords(form.value).subscribe(
+    //   res => {
+    //     // this.functionDebug = JSON.stringify(res[0]);
+    //     const text = 'text';
+    //     const temp = 'extractions';
+    //     const temp1 = 'parsed_value';
+    //     this.keywords = res[0][temp];
+    //     // this.case = res[0][text];
+    //   },
+    //   err => {
+    //     this.functionDebug = err.errors;
+    //   }
+    // );
+    this.userService.get_files(form.value).subscribe(
       res => {
-        // this.functionDebug = JSON.stringify(res[0]);
-        const text = 'text';
-        const temp = 'extractions';
-        const temp1 = 'parsed_value';
-        this.keywords = res[0][temp];
-        // this.case = res[0][text];
-      },
-      err => {
-        this.functionDebug = err.errors;
+        const filenames = 'filenames';
+        this.files = res[filenames];
       }
     );
     this.userService.predict_label(form.value).subscribe(

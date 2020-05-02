@@ -4,9 +4,9 @@ const passport=require('passport');
 const _ =require('lodash');
 
 module.exports.register = (req,res,next)=> {
-    console.log('Inside user Register Function');
+    // console.log('Inside user Register Function');
     var user =new User();
-    console.log(req.body);
+    // console.log(req.body);
     user.fullname=req.body.fullname;
     user.email=req.body.email; 
     user.password=req.body.password;
@@ -27,12 +27,12 @@ module.exports.register = (req,res,next)=> {
 }
 
 module.exports.authenticate = (req,res,next)=> {
-    console.log('Inside Login Function');
+    // console.log('Inside Login Function');
     passport.authenticate('local',(err,user,info) => {
         if(err)
             return res.status(400).json(err);
         else if(user){
-            console.log('success');
+            // console.log('success');
             return res.status(200).json({ "token": user.generateJwt() });
         }
         else

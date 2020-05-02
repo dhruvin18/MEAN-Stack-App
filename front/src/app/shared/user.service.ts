@@ -43,6 +43,9 @@ export class UserService {
     return this.http.post('http://localhost:5000/predict_class', data);
   }
 
+  get_files(data) {
+    return this.http.post('http://localhost:5000/filenames', data);
+  }
   // helper methods
   setToken(token: string) {
     localStorage.setItem('token', token);

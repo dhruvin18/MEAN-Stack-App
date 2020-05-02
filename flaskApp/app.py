@@ -4,6 +4,8 @@ from flask import request
 from flask_cors import CORS
 from preprocess import preProcess
 from model import predict_label
+from flask import send_file
+from flask import request
 
 app=Flask(__name__)
 CORS(app)
@@ -27,6 +29,20 @@ def get_class():
     print(final)
     return final
 
+@app.route('/filenames',methods=['POST'])
+def get_filenames():
+    filename1='AmrishTrivediAliasNikkiVStateOfUP.txt'
+    link1= 'http://localhost:5000/download/'+filename1
+    filename2='BhagwanDeenVStateOfUP.txt'
+    link2 = 'http://localhost:5000/download/'+filename2
+    filename3='BholaRamlakhanGuptaVStateOfMaharashtra.txt'
+    return jsonify({"filenames":[{"name": filename1, "link": link1 }, {"name": filename2, "link": link2 }]})
+
+@app.route('/download/<name>', methods=['GET'])
+def download(name):
+    file='./../server/Dataset/'+name
+    return send_file(file, as_attachment=True)
+    
 if __name__== '__main__':
     app.run(debug=True)
 

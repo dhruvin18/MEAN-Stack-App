@@ -27,7 +27,7 @@
         </nav>
     </header>
 
-    <div class="container" style="margin-top: 2rem">
+    <div class="container" style="margin-top: 2rem;">
         <div align="center">
           <form #QueryForm="ngForm" (ngSubmit)="QueryForm.valid && onSubmit(QueryForm)">
               <!-- <input type="text"> -->
@@ -44,7 +44,18 @@
     </div>
 
     <h2 *ngIf="functionDebug1">{{functionDebug1}}</h2>
+    <!-- <a [attr.href]='name'>{{filename}}</a> -->
+    <div class="container" *ngIf="files">
+      <table class="table">
+        <tr>
+          <!-- <th>Cases</th> -->
+          <thead *ngFor="let file of files">
+            <th><a [attr.href]='file.link'>{{file.name}}</a></th>
+          </thead>
+        </tr>
+      </table>
 
+    </div>
     <div class="container" *ngIf="case">
       <table class="table" >
         <tr>
@@ -65,12 +76,10 @@
         </tr>
       </table>
     </div>
+    <div class="container">
+      <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
+    </div>
     <div class="container" *ngIf="keywords">
-        <!-- <div *ngFor="let keyword of keywords">
-            <button type="button" class="btn btn-dark">{{keyword.parsed_value}}</button>
-            <p>{{keyword.relevance}}</p>
-        </div> -->
-        <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
         <table class="table">
           <thead>
             <tr>
