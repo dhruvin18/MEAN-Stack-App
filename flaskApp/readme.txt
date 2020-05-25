@@ -1,6 +1,6 @@
 #setup virtual environment env
 py venv env
-.\enc\Scripts\activate
+.\env\Scripts\activate
 
 pip install -r requirements.txt
 

@@ -1,5 +1,3 @@
-<html>
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
     <!--Import Google Icon Font-->
@@ -27,37 +25,34 @@
         </nav>
     </header>
 
+    <div class="container" style="margin-top: 2rem; text-align: center;">
+        <div class="row">
+            <h4 class="light-green darken-1 col l6" >Label 1: Chances of Success are high in this case </h4>
+            <h4 class="red darken-2 col l6">Label 0: Chances of Success are low in this case  </h4>
+        </div>
+    </div>
+
     <div class="container" style="margin-top: 2rem;">
         <div align="center">
-          <form #QueryForm="ngForm" (ngSubmit)="QueryForm.valid && onSubmit(QueryForm)">
+          <form *ngIf="!query" #QueryForm="ngForm" (ngSubmit)="QueryForm.valid && onSubmit(QueryForm)">
               <!-- <input type="text"> -->
-              <!-- <textarea placeholder="Enter the Case Facts Here" #data="ngModel" [(ngModel)]="model.data" id="casefacts" required></textarea> -->
-              <!-- <button type="button" class="btn btn-danger btn-block" id="submitbutton">Submit Query</button> -->
-              <input type="text" name="data" #data="ngModel" [(ngModel)]="model.data" placeholder="Case Facts" required minlength="50">
+              <textarea placeholder="Enter the Case Facts Here" name="data" #data="ngModel" [(ngModel)]="model.data" id="casefacts" required></textarea>
               <input type="submit" value="Submit Query" id="submitbutton" class="btn btn-block">
               <div *ngIf="QueryForm.submitted && !data.valid">
                 <label *ngIf="data.errors.required" class="validation-message"><h3><b>CASE FACTS CANNOT BE EMPTY</b></h3></label>
                 <label *ngIf="data.errors.minlength" class="validation-message"><h3>The case facts must be more detailed</h3></label>
               </div>
           </form>
+          <iframe *ngIf="query" src="https://giphy.com/embed/y1ZBcOGOOtlpC" width="480" height="480" frameBorder="0" class="giphy-embed center" allowFullScreen></iframe>
         </div>
     </div>
 
     <h2 *ngIf="functionDebug1">{{functionDebug1}}</h2>
-    <!-- <a [attr.href]='name'>{{filename}}</a> -->
-    <div class="container" *ngIf="files">
-      <table class="table">
-        <tr>
-          <!-- <th>Cases</th> -->
-          <thead *ngFor="let file of files">
-            <th><a [attr.href]='file.link'>{{file.name}}</a></th>
-          </thead>
-        </tr>
-      </table>
 
-    </div>
-    <div class="container" *ngIf="case">
-      <table class="table" >
+    <!-- <a [attr.href]='name'>{{filename}}</a> -->
+    <div class="container" *ngIf="case && !query">
+
+      <table class="bordered" style="text-align: center;" >
         <tr>
           <th>Algorithm</th>
           <th>{{svm}}</th>
@@ -68,17 +63,24 @@
         </tr>
         <tr>
           <th>Predicted Class</th>
-          <td>{{svmclass}}</td>
-          <td>{{rfclass}}</td>
-          <td>{{knnclass}}</td>
-          <td>{{lrclass}}</td>
-          <td>{{nbclass}}</td>
+          <td *ngIf="svmclass==1" class=" light-green darken-1">{{svmclass}}</td>
+          <td *ngIf="rfclass==1" class=" light-green darken-1">{{rfclass}}</td>
+          <td *ngIf="knnclass==1" class="light-green darken-1">{{knnclass}}</td>
+          <td *ngIf="lrclass==1" class="light-green darken-1">{{lrclass}}</td>
+          <td *ngIf="nbclass==1" class="light-green darken-1">{{nbclass}}</td>
+          <td *ngIf="svmclass==0" class="red darken-2">{{svmclass}}</td>
+          <td *ngIf="rfclass==0" class=" red darken-2">{{rfclass}}</td>
+          <td *ngIf="knnclass==0" class="red darken-2">{{knnclass}}</td>
+          <td *ngIf="lrclass==0" class="red darken-2">{{lrclass}}</td>
+          <td *ngIf="nbclass==0" class="red darken-2">{{nbclass}}</td>
         </tr>
       </table>
     </div>
-    <div class="container">
+
+
+    <!-- <div class="container">
       <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
-    </div>
+    </div> -->
     <div class="container" *ngIf="keywords">
         <table class="table">
           <thead>
@@ -94,8 +96,20 @@
             </tr>
           </tbody>
         </table>
+<br><br><br>
+    <div class="container">
+        <table *ngIf="files" class="table">
+            <tr>
+              <!-- <th>Cases</th> -->
+              <tbody>
+                <tr *ngFor="let file of files">
+                    <td><a [attr.href]='file.link'>{{file.name}}</a></td>
+                </tr>
+              </tbody>
+            </tr>
+          </table>
     </div>
-</html>
+  </div>
 
 <style>
     .black-text {

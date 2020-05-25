@@ -11,6 +11,7 @@ import { formatDate } from '../../../node_modules/@angular/common';
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
+  query = false;
   serverErrorMessages: string;
   functionDebug: string;
   functionDebug1: string;
@@ -51,6 +52,7 @@ export class UserProfileComponent implements OnInit {
 
 
   onSubmit(form: NgForm) {
+    this.query = true;
     const formdata = form.value;
     // this.userService.extractKeywords(form.value).subscribe(
     //   res => {
@@ -80,6 +82,7 @@ export class UserProfileComponent implements OnInit {
         this.rfclass = res[this.rf];
         this.knnclass = res[this.knn];
         this.svmclass = res[this.svm];
+        this.query = false;
       },
       err => {
         this.classerror = err.errors;

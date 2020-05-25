@@ -2,3 +2,10 @@ html {
   background-color: white;
 }
 
+td {
+  text-align: center;
+}
+
+table {
+  border: 1in black!important;
+}
