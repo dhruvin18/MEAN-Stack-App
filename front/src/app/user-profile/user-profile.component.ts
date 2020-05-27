@@ -21,6 +21,9 @@ export class UserProfileComponent implements OnInit {
   rfclass;
   lrclass;
   knnclass;
+  d2vsvmclass;
+  d2vrfclass;
+  d2vlrclass;
   classerror;
   files;
   lr = 'Logistic Regression';
@@ -28,6 +31,9 @@ export class UserProfileComponent implements OnInit {
   rf = 'Random Forest';
   svm = 'SVM';
   knn = 'k Nearest Neighbour';
+  d2vsvm = 'D2VSVM';
+  d2vrf = 'D2VLR';
+  d2vlr = 'D2VRf';
   name = 'http://localhost:5000/download';
   filename = 'AmrishTrivediAliasNikkiVStateOfUP.txt';
   // keywords: string[];
@@ -82,6 +88,9 @@ export class UserProfileComponent implements OnInit {
         this.rfclass = res[this.rf];
         this.knnclass = res[this.knn];
         this.svmclass = res[this.svm];
+        this.d2vsvmclass = res[this.d2vsvm];
+        this.d2vrfclass = res[this.d2vrf];
+        this.d2vlrclass = res[this.d2vlr];
         this.query = false;
       },
       err => {

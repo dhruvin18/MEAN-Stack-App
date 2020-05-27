@@ -9,3 +9,37 @@ td {
 table {
   border: 1in black!important;
 }
+.black-text {
+  margin-right: 1em;
+}
+textarea {
+  width: 100%;
+  height:20rem;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f3e5f5  ;
+  font-size: 1em;
+  resize: none;
+}
+#submitbutton{
+  margin-top: 1rem;
+  margin-left: 0;
+  background-color: black;
+  font-size: 1.5em;
+  padding: 0%;
+}
+#submitbutton:hover{
+  margin-top: 1rem;
+  margin-left: 0;
+  color:white;
+  background-color: firebrick;
+}
+#lgbtn {
+  background-color: black;
+}
+#lgbtn:hover{
+  color: white !important;
+  background-color: firebrick !important;
+}

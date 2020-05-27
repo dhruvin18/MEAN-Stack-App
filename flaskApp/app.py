@@ -4,6 +4,7 @@ from flask import request
 from flask_cors import CORS
 from preprocess import preProcess
 from model import predict_label
+from modelsd2v import predictD2Vclass
 from flask import send_file
 from flask import request
 
@@ -16,7 +17,7 @@ def get_tasks():
     return jsonify({'data':data})
 
 @app.route('/pre_process',methods=['POST'])
-def get_cleanede_data():
+def get_cleaned_data():
     data=request.get_json()
     final=preProcess(data['data'])
     return jsonify({'data':final})
@@ -25,9 +26,9 @@ def get_cleanede_data():
 def get_class():
     data=request.get_json()
     data=preProcess(data['data'])
-    final=predict_label(data)
-    print(final)
-    return final
+    svm,nb,knn,lr,rf=predict_label(data)
+    k,l,m=predictD2Vclass(data)
+    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m})
 
 @app.route('/filenames',methods=['POST'])
 def get_filenames():
@@ -44,5 +45,5 @@ def download(name):
     return send_file(file, as_attachment=True)
     
 if __name__== '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
 
