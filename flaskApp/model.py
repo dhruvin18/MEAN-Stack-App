@@ -21,7 +21,7 @@ X_test = testdf.loc[:,'Judgement'].values
 
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.feature_extraction.text import TfidfVectorizer
-vectorizer = TfidfVectorizer()
+vectorizer = TfidfVectorizer(ngram_range=(1,3), max_features=10000)
 train_vectors = vectorizer.fit_transform(X_train)
 def predict_label(data):
     case=[]

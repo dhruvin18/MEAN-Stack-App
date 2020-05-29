@@ -5,6 +5,7 @@ from flask_cors import CORS
 from preprocess import preProcess
 from model import predict_label
 from modelsd2v import predictD2Vclass
+from BOWmodel import predictclass
 from flask import send_file
 from flask import request
 
@@ -27,8 +28,9 @@ def get_class():
     data=request.get_json()
     data=preProcess(data['data'])
     svm,nb,knn,lr,rf=predict_label(data)
-    k,l,m=predictD2Vclass(data)
-    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m})
+    k,l,m,n,f=predictD2Vclass(data)
+    a,b,c,d,e=predictclass(data)
+    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f})
 
 @app.route('/filenames',methods=['POST'])
 def get_filenames():
@@ -41,7 +43,7 @@ def get_filenames():
 
 @app.route('/download/<name>', methods=['GET'])
 def download(name):
-    file='./../server/Dataset/'+name
+    file='./../../Dataset/dataset/'+name
     return send_file(file, as_attachment=True)
     
 if __name__== '__main__':

@@ -43,3 +43,7 @@ textarea {
   color: white !important;
   background-color: firebrick !important;
 }
+
+th {
+text-align: center !important;
+}

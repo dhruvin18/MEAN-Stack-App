@@ -73,16 +73,43 @@
           <td *ngIf="d2vsvmclass==0" class="red darken-2">{{d2vsvmclass}}</td>
           <td *ngIf="d2vrfclass==1" class=" light-green darken-1">{{d2vrfclass}}</td>
           <td *ngIf="d2vrfclass==0" class=" red darken-2">{{d2vrfclass}}</td>
-          <!-- <td *ngIf="d2vknnclass==1" class="light-green darken-1">{{d2vknnclass}}</td>
-          <td *ngIf="d2vknnclass==0" class="red darken-2">{{d2vknnclass}}</td> -->
-          <td>---</td>
+          <td *ngIf="d2vknnclass==1" class="light-green darken-1">{{d2vknnclass}}</td>
+          <td *ngIf="d2vknnclass==0" class="red darken-2">{{d2vknnclass}}</td>
           <td *ngIf="d2vlrclass==1" class="light-green darken-1">{{d2vlrclass}}</td>
           <td *ngIf="d2vlrclass==0" class="red darken-2">{{d2vlrclass}}</td>
           <td>---</td>
         </tr>
+        <tr>
+          <th>Feature Extraction 3: Bag Of Words</th>
+          <td *ngIf="bowsvmclass==1" class=" light-green darken-1">{{bowsvmclass}}</td>
+          <td *ngIf="bowsvmclass==0" class="red darken-2">{{bowsvmclass}}</td>
+          <td *ngIf="bowrfclass==1" class=" light-green darken-1">{{bowrfclass}}</td>
+          <td *ngIf="bowrfclass==0" class=" red darken-2">{{bowrfclass}}</td>
+          <td *ngIf="bowknnclass==1" class="light-green darken-1">{{bowknnclass}}</td>
+          <td *ngIf="bowknnclass==0" class="red darken-2">{{bowknnclass}}</td>
+          <td *ngIf="bowlrclass==1" class="light-green darken-1">{{bowlrclass}}</td>
+          <td *ngIf="bowlrclass==0" class="red darken-2">{{bowlrclass}}</td>
+          <td *ngIf="bownbclass==1" class="light-green darken-1">{{bownbclass}}</td>
+          <td *ngIf="bownbclass==0" class="red darken-2">{{bownbclass}}</td>
+        </tr>
       </table>
     </div>
-
+    <br><br><br>
+    <div class="container">
+      <table *ngIf="files" class="bordered" style="text-align: center">
+            <!-- <th>Cases</th> -->
+            <tbody>
+              <tr>
+                <th>Case Name</th>
+                <th>similarity</th>
+              </tr>
+              <tr *ngFor="let file of files">
+                  <td><a [attr.href]='file.link'>{{file.name}}</a></td>
+                  <td>{{file.similarity}}</td>
+              </tr>
+            </tbody>
+        </table>
+  </div>
 
     <!-- <div class="container">
       <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
@@ -103,18 +130,7 @@
           </tbody>
         </table>
 <br><br><br>
-    <div class="container">
-        <table *ngIf="files" class="table">
-            <tr>
-              <!-- <th>Cases</th> -->
-              <tbody>
-                <tr *ngFor="let file of files">
-                    <td><a [attr.href]='file.link'>{{file.name}}</a></td>
-                </tr>
-              </tbody>
-            </tr>
-          </table>
-    </div>
+
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

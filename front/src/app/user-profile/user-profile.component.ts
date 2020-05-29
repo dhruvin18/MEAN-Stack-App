@@ -24,6 +24,12 @@ export class UserProfileComponent implements OnInit {
   d2vsvmclass;
   d2vrfclass;
   d2vlrclass;
+  d2vknnclass;
+  bowsvmclass;
+  bownbclass;
+  bowrfclass;
+  bowlrclass;
+  bowknnclass;
   classerror;
   files;
   lr = 'Logistic Regression';
@@ -34,8 +40,12 @@ export class UserProfileComponent implements OnInit {
   d2vsvm = 'D2VSVM';
   d2vrf = 'D2VLR';
   d2vlr = 'D2VRf';
-  name = 'http://localhost:5000/download';
-  filename = 'AmrishTrivediAliasNikkiVStateOfUP.txt';
+  d2vknn = 'D2VKNN';
+  bowsvm = 'BOWSVM';
+  bowrf = 'BOWRF';
+  bowlr = 'BOWLR';
+  bownb = 'BOWNB';
+  bowknn = 'BOWKNN';
   // keywords: string[];
   keywords;
   confidence: number[];
@@ -73,12 +83,12 @@ export class UserProfileComponent implements OnInit {
     //     this.functionDebug = err.errors;
     //   }
     // );
-    this.userService.get_files(form.value).subscribe(
-      res => {
-        const filenames = 'filenames';
-        this.files = res[filenames];
-      }
-    );
+    // this.userService.get_files(form.value).subscribe(
+    //   res => {
+    //     const filenames = 'filenames';
+    //     this.files = res[filenames];
+    //   }
+    // );
     this.userService.predict_label(form.value).subscribe(
       res => {
         const data = 'case';
@@ -91,7 +101,15 @@ export class UserProfileComponent implements OnInit {
         this.d2vsvmclass = res[this.d2vsvm];
         this.d2vrfclass = res[this.d2vrf];
         this.d2vlrclass = res[this.d2vlr];
+        this.d2vknnclass = res[this.d2vknn];
+        this.bowsvmclass = res[this.bowsvm];
+        this.bowknnclass = res[this.bowknn];
+        this.bowrfclass = res[this.bowrf];
+        this.bowlrclass = res[this.bowlr];
+        this.bownbclass = res[this.bownb];
         this.query = false;
+        const filenames = 'filenames';
+        this.files = res[filenames];
       },
       err => {
         this.classerror = err.errors;
