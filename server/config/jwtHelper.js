@@ -10,7 +10,7 @@ module.exports.verifyJwtToken = (req,res,next) => {
         return res.status(403).send({auth: false,message: 'No token Provided'});
     }
     else{
-        console.log(token);
+        // console.log(token);
         jwt.verify(token, "SECRET#123",
             (err,decoded) => {
                 if(err){

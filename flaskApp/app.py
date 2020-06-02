@@ -30,7 +30,8 @@ def get_class():
     svm,nb,knn,lr,rf=predict_label(data)
     k,l,m,n,f=predictD2Vclass(data)
     a,b,c,d,e=predictclass(data)
-    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f})
+    positive=(int(svm)+int(nb)+int(knn)+int(lr)+int(rf)+int(k)+int(l)+int(m)+int(n)+int(a)+int(b)+int(c)+int(d)+int(e))
+    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f, "cases": positive})
 
 @app.route('/filenames',methods=['POST'])
 def get_filenames():

@@ -46,7 +46,8 @@ def predictD2Vclass(data):
         print(train.iloc[int(i[0])][1])
         filename=labelled.loc[labelled['Case Name'] == train.iloc[int(i[0])][1]]['Filename'].values[0]
         link= 'http://localhost:5000/download/'+filename
-        files.append({"name": train.iloc[int(i[0])][1], "link": link, "similarity": i[1]})
+        similarity= str(float(i[1]*100))
+        files.append({"name": train.iloc[int(i[0])][1], "link": link, "similarity": similarity})
     y_pred,X_pred=vec_for_learning(model,tagged_data_predict)
     lr_predict_label = LRloaded_model.predict(X_pred)
     rf_predict_label = RFloaded_model.predict(X_pred)

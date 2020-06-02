@@ -1,5 +1,4 @@
 import pickle
-from flask import jsonify
 import pandas as pd
 
 svmfilename = 'svm_model.sav'
@@ -13,16 +12,8 @@ KNNloaded_model = pickle.load(open(knnfilename, 'rb'))
 LRloaded_model = pickle.load(open(lrfilename, 'rb'))
 RFloaded_model = pickle.load(open(rffilename, 'rb'))
 
-#path = '/content/drive/My Drive/BE PROJECT/Lawgical Final/LabelledDataset/'
-traindf = pd.read_csv('./train.csv')
-testdf = pd.read_csv('./test.csv')
-X_train = traindf.loc[:,'Judgement'].values
-X_test = testdf.loc[:,'Judgement'].values
+vectorizer =pickle.load(open('./TFIDFvectorizer.pickle', 'rb'))  
 
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import TfidfVectorizer
-vectorizer = TfidfVectorizer(ngram_range=(1,3), max_features=10000)
-train_vectors = vectorizer.fit_transform(X_train)
 def predict_label(data):
     case=[]
     case.append(data)

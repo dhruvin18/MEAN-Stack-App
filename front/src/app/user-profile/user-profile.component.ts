@@ -46,6 +46,7 @@ export class UserProfileComponent implements OnInit {
   bowlr = 'BOWLR';
   bownb = 'BOWNB';
   bowknn = 'BOWKNN';
+  cases = 0;
   // keywords: string[];
   keywords;
   confidence: number[];
@@ -64,6 +65,7 @@ export class UserProfileComponent implements OnInit {
       },
       err => {}
     );
+    this.query = false;
   }
 
 
@@ -110,6 +112,8 @@ export class UserProfileComponent implements OnInit {
         this.query = false;
         const filenames = 'filenames';
         this.files = res[filenames];
+        const temp = 'cases';
+        this.cases = res[temp];
       },
       err => {
         this.classerror = err.errors;

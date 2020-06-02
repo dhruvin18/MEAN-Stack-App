@@ -23,8 +23,6 @@
         </nav>
     </header>
 
-
-
     <div class="container" style="margin-top: 2rem;">
         <div align="center">
           <form *ngIf="!query" #QueryForm="ngForm" (ngSubmit)="QueryForm.valid && onSubmit(QueryForm)">
@@ -36,16 +34,25 @@
                 <label *ngIf="data.errors.minlength" class="validation-message"><h3>The case facts must be more detailed</h3></label>
               </div>
           </form>
-          <iframe *ngIf="query" src="https://giphy.com/embed/y1ZBcOGOOtlpC" width="480" height="480" frameBorder="0" class="giphy-embed center" allowFullScreen></iframe>
+          <img *ngIf="query" src="./../../assets/img/loading.gif" style="height: 480px; width: 480px;">
         </div>
     </div>
+
+
+
 
     <h2 *ngIf="functionDebug1">{{functionDebug1}}</h2>
 
     <!-- <a [attr.href]='name'>{{filename}}</a> -->
     <div class="container" *ngIf="case && !query">
-
-      <table class="bordered" style="text-align: center;" >
+        <div class="container">
+            <div class="row" style="border-style: solid;">
+                  <h4 *ngIf="cases>=7" class="col l8"  style="vertical-align: middle; padding-top: 35px; padding-left: 35px">Chances of success are high </h4>
+                  <h4 *ngIf="cases<7" class="col l4" style="vertical-align: middle; padding-top: 35px; padding-left: 35px"> Chances of success are low</h4>
+                  <img src="./../../assets/img/gavel.gif" alt="GAVEL BANG!!!">
+            </div>
+          </div>
+      <table class="bordered" style="text-align: center; border-style: solid" >
         <tr>
           <th>Algorithm</th>
           <th>model 1: {{svm}}</th>
@@ -93,23 +100,19 @@
           <td *ngIf="bownbclass==0" class="red darken-2">{{bownbclass}}</td>
         </tr>
       </table>
+      <br>
+    <h4 class="center"><b>SIMILAR CASES FROM PAST</b></h4>
+      <div class="row">
+        <div *ngFor="let file of files" class="col-md-6 col-lg-6">
+          <div class="card">
+            <div class="card-content">
+              <span> <a [attr.href]='file.link'>{{file.name}}</a></span>
+              <p>{{file.similarity}} %</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <br><br><br>
-    <div class="container">
-      <table *ngIf="files" class="bordered" style="text-align: center">
-            <!-- <th>Cases</th> -->
-            <tbody>
-              <tr>
-                <th>Case Name</th>
-                <th>similarity</th>
-              </tr>
-              <tr *ngFor="let file of files">
-                  <td><a [attr.href]='file.link'>{{file.name}}</a></td>
-                  <td>{{file.similarity}}</td>
-              </tr>
-            </tbody>
-        </table>
-  </div>
 
     <!-- <div class="container">
       <textarea id="casefacts" *ngIf="case" readonly>{{case}}</textarea>
@@ -129,9 +132,7 @@
             </tr>
           </tbody>
         </table>
-<br><br><br>
-
-  </div>
+    </div>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
