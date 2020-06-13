@@ -1,3 +1,6 @@
 *.npy
 /.vscode
 *.pyc
+*.sav
+*.model
+/flaskApp/__pycache__
