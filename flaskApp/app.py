@@ -9,6 +9,9 @@ from BOWmodel import predictclass
 from flask import send_file
 from flask import request
 
+import fasttext
+model_fasttext = fasttext.load_model("model_fasttext.bin")
+
 app=Flask(__name__)
 CORS(app)
 # data=open('../Dataset/dataset_bombay/AakifAteequeNachanVTheStateOfMaharashtra.txt', 'r', encoding="utf8", errors="ignore")
@@ -31,8 +34,14 @@ def get_class():
     k,l,m,n,f=predictD2Vclass(data)
     a,b,c,d,e=predictclass(data)
     positive=(int(svm)+int(nb)+int(knn)+int(lr)+int(rf)+int(k)+int(l)+int(m)+int(n)+int(a)+int(b)+int(c)+int(d)+int(e))
-    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f, "cases": positive})
-
+    predicted= model_fasttext.predict(data)
+    if(predicted[0][0]=='__label__1'):
+        fasttextlabel='1'
+    else:
+        fasttextlabel='0'
+    fasttextconfidence=predicted[1][0]
+    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f, "cases": positive, "fasttextLabel": fasttextlabel, "fasttextConfidence": fasttextconfidence})
+    
 @app.route('/filenames',methods=['POST'])
 def get_filenames():
     filename1='AmrishTrivediAliasNikkiVStateOfUP.txt'

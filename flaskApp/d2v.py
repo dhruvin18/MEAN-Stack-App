@@ -73,13 +73,13 @@ print(len(model.docvecs))
 # print('Testing accuracy %s' % accuracy_score(y_test, y_pred))
 # print('Testing F1 score : {}'.format(f1_score(y_test, y_pred, average='weighted')))
 
-# #algo 2 (KNN)-optimized
-# from sklearn.neighbors import KNeighborsClassifier
-# knn = KNeighborsClassifier(n_neighbors=10, weights='distance')
-# knn.fit(X_train, y_train)
-# predicted = knn.predict(X_test)
-# pickle.dump(knn, open('d2vknn_model.sav', 'wb'))
-# print(accuracy_score(y_test,predicted))
+# # #algo 2 (KNN)-optimized
+# # from sklearn.neighbors import KNeighborsClassifier
+# # knn = KNeighborsClassifier(n_neighbors=10, weights='distance')
+# # knn.fit(X_train, y_train)
+# # predicted = knn.predict(X_test)
+# # pickle.dump(knn, open('d2vknn_model.sav', 'wb'))
+# # print(accuracy_score(y_test,predicted))
 
 # #algo 3 (SVM)
 # from sklearn.svm import LinearSVC

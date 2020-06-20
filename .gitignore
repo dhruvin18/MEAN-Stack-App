@@ -3,4 +3,6 @@
 *.pyc
 *.sav
 *.model
+*.pickle
 /flaskApp/__pycache__
+*.bin

@@ -30,7 +30,7 @@
               <textarea placeholder="Enter the Case Facts Here" name="data" #data="ngModel" [(ngModel)]="model.data" id="casefacts" required></textarea>
               <input type="submit" value="Submit Query" id="submitbutton" class="btn btn-block">
               <div *ngIf="QueryForm.submitted && !data.valid">
-                <label *ngIf="data.errors.required" class="validation-message"><h3><b>CASE FACTS CANNOT BE EMPTY</b></h3></label>
+                <label *ngIf="data.errors.required" class="validation-message black-text"><h4><b>CASE FACTS CANNOT BE EMPTY</b></h4></label>
                 <label *ngIf="data.errors.minlength" class="validation-message"><h3>The case facts must be more detailed</h3></label>
               </div>
           </form>
@@ -62,6 +62,19 @@
           <th>model 5: {{nb}}</th>
         </tr>
         <tr>
+          <th>Feature Extraction 3: Bag Of Words</th>
+          <td *ngIf="bowsvmclass==1" class=" light-green darken-1">{{bowsvmclass}}</td>
+          <td *ngIf="bowsvmclass==0" class="red darken-2">{{bowsvmclass}}</td>
+          <td *ngIf="bowrfclass==1" class=" light-green darken-1">{{bowrfclass}}</td>
+          <td *ngIf="bowrfclass==0" class=" red darken-2">{{bowrfclass}}</td>
+          <td *ngIf="bowknnclass==1" class="light-green darken-1">{{bowknnclass}}</td>
+          <td *ngIf="bowknnclass==0" class="red darken-2">{{bowknnclass}}</td>
+          <td *ngIf="bowlrclass==1" class="light-green darken-1">{{bowlrclass}}</td>
+          <td *ngIf="bowlrclass==0" class="red darken-2">{{bowlrclass}}</td>
+          <td *ngIf="bownbclass==1" class="light-green darken-1">{{bownbclass}}</td>
+          <td *ngIf="bownbclass==0" class="red darken-2">{{bownbclass}}</td>
+        </tr>
+        <tr>
           <th>Feature Extraction 1: TFIDF</th>
           <td *ngIf="svmclass==1" class=" light-green darken-1">{{svmclass}}</td>
           <td *ngIf="svmclass==0" class="red darken-2">{{svmclass}}</td>
@@ -85,19 +98,6 @@
           <td *ngIf="d2vlrclass==1" class="light-green darken-1">{{d2vlrclass}}</td>
           <td *ngIf="d2vlrclass==0" class="red darken-2">{{d2vlrclass}}</td>
           <td>---</td>
-        </tr>
-        <tr>
-          <th>Feature Extraction 3: Bag Of Words</th>
-          <td *ngIf="bowsvmclass==1" class=" light-green darken-1">{{bowsvmclass}}</td>
-          <td *ngIf="bowsvmclass==0" class="red darken-2">{{bowsvmclass}}</td>
-          <td *ngIf="bowrfclass==1" class=" light-green darken-1">{{bowrfclass}}</td>
-          <td *ngIf="bowrfclass==0" class=" red darken-2">{{bowrfclass}}</td>
-          <td *ngIf="bowknnclass==1" class="light-green darken-1">{{bowknnclass}}</td>
-          <td *ngIf="bowknnclass==0" class="red darken-2">{{bowknnclass}}</td>
-          <td *ngIf="bowlrclass==1" class="light-green darken-1">{{bowlrclass}}</td>
-          <td *ngIf="bowlrclass==0" class="red darken-2">{{bowlrclass}}</td>
-          <td *ngIf="bownbclass==1" class="light-green darken-1">{{bownbclass}}</td>
-          <td *ngIf="bownbclass==0" class="red darken-2">{{bownbclass}}</td>
         </tr>
       </table>
       <br>
