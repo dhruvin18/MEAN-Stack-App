@@ -31,6 +31,8 @@ export class UserProfileComponent implements OnInit {
   bowlrclass;
   bowknnclass;
   classerror;
+  ftlabel;
+  ftconfidence;
   files;
   lr = 'Logistic Regression';
   nb = 'Naive Bayes';
@@ -46,6 +48,8 @@ export class UserProfileComponent implements OnInit {
   bowlr = 'BOWLR';
   bownb = 'BOWNB';
   bowknn = 'BOWKNN';
+  fasttextlabel = 'fasttextlabel';
+  fasttextconfidence = 'fasttextconfidence';
   cases = 0;
   // keywords: string[];
   keywords;
@@ -109,6 +113,8 @@ export class UserProfileComponent implements OnInit {
         this.bowrfclass = res[this.bowrf];
         this.bowlrclass = res[this.bowlr];
         this.bownbclass = res[this.bownb];
+        this.ftlabel = res[this.fasttextlabel];
+        this.ftconfidence = res[this.fasttextconfidence];
         this.query = false;
         const filenames = 'filenames';
         this.files = res[filenames];

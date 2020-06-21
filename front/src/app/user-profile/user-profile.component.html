@@ -52,17 +52,17 @@
                   <img src="./../../assets/img/gavel.gif" alt="GAVEL BANG!!!">
             </div>
           </div>
-      <table class="bordered" style="text-align: center; border-style: solid" >
+      <table class="table-bordered" style="text-align: center;" >
         <tr>
           <th>Algorithm</th>
-          <th>model 1: {{svm}}</th>
-          <th>model 2: {{rf}}</th>
-          <th>model 3: {{knn}}</th>
-          <th>model 4: {{lr}}</th>
-          <th>model 5: {{nb}}</th>
+          <th>{{svm}}</th>
+          <th>{{rf}}</th>
+          <th>{{knn}}</th>
+          <th>{{lr}}</th>
+          <th>{{nb}}</th>
         </tr>
         <tr>
-          <th>Feature Extraction 3: Bag Of Words</th>
+          <th>Bag Of Words</th>
           <td *ngIf="bowsvmclass==1" class=" light-green darken-1">{{bowsvmclass}}</td>
           <td *ngIf="bowsvmclass==0" class="red darken-2">{{bowsvmclass}}</td>
           <td *ngIf="bowrfclass==1" class=" light-green darken-1">{{bowrfclass}}</td>
@@ -75,7 +75,7 @@
           <td *ngIf="bownbclass==0" class="red darken-2">{{bownbclass}}</td>
         </tr>
         <tr>
-          <th>Feature Extraction 1: TFIDF</th>
+          <th>TFIDF</th>
           <td *ngIf="svmclass==1" class=" light-green darken-1">{{svmclass}}</td>
           <td *ngIf="svmclass==0" class="red darken-2">{{svmclass}}</td>
           <td *ngIf="rfclass==1" class=" light-green darken-1">{{rfclass}}</td>
@@ -88,7 +88,7 @@
           <td *ngIf="nbclass==0" class="red darken-2">{{nbclass}}</td>
         </tr>
         <tr>
-          <th>Feature Extraction 2: DOC2VEC</th>
+          <th>DOC2VEC</th>
           <td *ngIf="d2vsvmclass==1" class=" light-green darken-1">{{d2vsvmclass}}</td>
           <td *ngIf="d2vsvmclass==0" class="red darken-2">{{d2vsvmclass}}</td>
           <td *ngIf="d2vrfclass==1" class=" light-green darken-1">{{d2vrfclass}}</td>
@@ -101,6 +101,23 @@
         </tr>
       </table>
       <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-lg-3"></div>
+          <div class="col-md-6 col-lg-6 col-sm-12 align-self-center">
+            <div class="card">
+              <div *ngIf="ftlabel==1" class="card-content light-green darken-1" style="text-align: center">
+                <p><b>Fasttext Prediction: {{ftlabel}}</b></p>
+                <p><b>Confidence: {{ftconfidence}} %</b></p>
+              </div>
+              <div *ngIf="ftlabel==0" class="card-content red darken-1" style="text-align: center">
+                  <b><p>Fasttext Prediction: {{ftlabel}}</p></b>
+                  <b><p>Confidence: {{ftconfidence}} %</p></b>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <h4 class="center"><b>SIMILAR CASES FROM PAST</b></h4>
       <div class="row">
         <div *ngFor="let file of files" class="col-md-6 col-lg-6">

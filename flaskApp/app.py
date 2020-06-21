@@ -39,8 +39,8 @@ def get_class():
         fasttextlabel='1'
     else:
         fasttextlabel='0'
-    fasttextconfidence=predicted[1][0]
-    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f, "cases": positive, "fasttextLabel": fasttextlabel, "fasttextConfidence": fasttextconfidence})
+    fasttextconfidence=predicted[1][0]*100
+    return jsonify({"case":data, "SVM":svm, "Naive Bayes": nb, "k Nearest Neighbour": knn,"Logistic Regression": lr, "Random Forest": rf , "D2VSVM": k, "D2VLR": l, "D2VRf": m, "D2VKNN":n,"BOWRF": e, "BOWSVM": a, "BOWNB": b, "BOWKNN": c, "BOWLR": d, "filenames": f, "cases": positive, "fasttextlabel": fasttextlabel, "fasttextconfidence": fasttextconfidence})
     
 @app.route('/filenames',methods=['POST'])
 def get_filenames():

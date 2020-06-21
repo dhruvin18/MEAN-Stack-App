@@ -47,3 +47,7 @@ textarea {
 th {
 text-align: center !important;
 }
+
+.table-bordered {
+  border-color: black !important;
+}
