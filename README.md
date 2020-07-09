@@ -47,6 +47,5 @@ To run the application: <code> ng serve --Open </code>
 
 ### Register and login: 
 
-![SignUp](https://github.com/dhruvin18/Foodblogapp/blob/master/GIFS/SignUp.gif "SignUp")
+![SignUp](https://github.com/dhruvin18/Lawgical/blob/master/Additional%20Codes/Register.gif "Register")
 
-![SignIn](https://github.com/dhruvin18/Foodblogapp/blob/master/GIFS/SignIn.gif "SignIn")
