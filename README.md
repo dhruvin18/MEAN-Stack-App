@@ -49,3 +49,8 @@ To run the application: <code> ng serve --Open </code>
 
 ![SignUp](https://github.com/dhruvin18/Lawgical/blob/master/Additional%20Codes/Register.gif "Register")
 
+![SignIn](https://github.com/dhruvin18/Lawgical/blob/master/Additional%20Codes/Signin.gif "Sign-In")
+
+### Output
+
+![Output](https://github.com/dhruvin18/Lawgical/blob/master/Additional%20Codes/Query.gif "Output")
