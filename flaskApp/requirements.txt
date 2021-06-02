@@ -42,7 +42,7 @@ thinc==7.4.0
 tqdm==4.45.0
 typing==3.6.2
 unidecode==0.4.21
-urllib3==1.25.9
+urllib3==1.26.5
 us==1.0.0
 wasabi==0.6.0
 Werkzeug==1.0.1
